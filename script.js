@@ -79,30 +79,10 @@ const projects = [
         id: 1,
         Title: 'Create Store Ecommerce ',
         Languages: ['PHP', "JS", "HTML", "CSS"],
-        images: [],
+        images: ["1p", "1p1", "1p2", "2p", "2p1", "2p2","2p3","3p"],
         description: 'Create This Site by Learn How Stores Ecommerces <strong>Gool Principal How work Algorithms !!</strong> ',
     },
-    {
-        id: 1,
-        Title: 'Create Store Ecommerce ',
-        Languages: ['PHP', "JS", "HTML", "CSS"],
-        images: [],
-        description: 'Create This Site by Learn How Stores Ecommerces <strong>Gool Principal How work Algorithms !!</strong> ',
-    },
-    {
-        id: 1,
-        Title: 'Create Store Ecommerce ',
-        Languages: ['PHP', "JS", "HTML", "CSS"],
-        images: [],
-        description: 'Create This Site by Learn How Stores Ecommerces <strong>Gool Principal How work Algorithms !!</strong> ',
-    },
-    {
-        id: 1,
-        Title: 'Create Store Ecommerce ',
-        Languages: ['PHP', "JS", "HTML", "CSS"],
-        images: [],
-        description: 'Create This Site by Learn How Stores Ecommerces <strong>Gool Principal How work Algorithms !!</strong> ',
-    },
+
 ]
 
 
@@ -110,13 +90,16 @@ const projects = [
 
 function render_projects() {
     let projects_ = '<div class="projects">';
-    projects.map(p => {
+    projects.map((p, index) => {
         const { images, Title } = p;
-        const image = images[0];
-        projects_ += `<div class='project'><h1>${Title}</h1>`;
-        projects_ += `<img src='./images/images_projects/${image}.png' title='${Title}'></div>`;
+        if (index == 0) {
+            projects_ += `<div class='project'><h1>${Title}</h1>`;
+        }
+        images.forEach(image => {
+            projects_ += `<img src='./images/images_projects/${image}.PNG' class="img_pr" title='${Title}'>`;
+        });
     })
-    content.innerHTML = projects_;
+    content.innerHTML = projects_ + "</div>";
 }
 
 
@@ -125,29 +108,29 @@ btn_projects.addEventListener('click', render_projects);
 
 
 
-function render_project(id) {
-    const pr = projects.filter(p => p.id == id);
-    let project = '<div class="project">';
-    pr.map(p => {
-        const { Title, Languages, images, description } = p
-        project += `
-        <h1>${Title}</h1>
-        <h5>${description}</h5>  
-        <ul> 
-        <h2>Languages:</h2> 
-        `;
-        Languages.forEach(lang => {
-            project += `<li>${lang}</li>`;
-        });
-        project += '</ul><div class="images">';
-        images.forEach(img => {
-            project += `<img src='./images/images_projects/${img}.png' title='${Title}'>`
-        });
-        project += '</div></div>';
-    })
+// function render_project(id) {
+//     const pr = projects.filter(p => p.id == id);
+//     let project = '<div class="project">';
+//     pr.map(p => {
+//         const { Title, Languages, images, description } = p
+//         project += `
+//         <h1>${Title}</h1>
+//         <h5>${description}</h5>  
+//         <ul> 
+//         <h2>Languages:</h2> 
+//         `;
+//         Languages.forEach(lang => {
+//             project += `<li>${lang}</li>`;
+//         });
+//         project += '</ul><div class="images">';
+//         images.forEach(img => {
+//             project += `<img src='./images/images_projects/${img}.png' title='${Title}'>`
+//         });
+//         project += '</div></div>';
+//     })
 
-    content.innerHTML = project;
-}
+//     content.innerHTML = project;
+// }
 
 
 
@@ -191,6 +174,12 @@ const render_contact = () => {
 const btn_contact = document.getElementById('contact');
 
 btn_contact.addEventListener('click', render_contact);
+
+
+
+
+
+
 
 
 
